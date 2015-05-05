@@ -77,11 +77,8 @@
 		BA0B75E71AF8BB7300479AD9 /* Project4EasyBroswer */ = {
 			isa = PBXGroup;
 			children = (
-				BA0B75EA1AF8BB7300479AD9 /* AppDelegate.swift */,
 				BA0B75EC1AF8BB7300479AD9 /* ViewController.swift */,
 				BA0B75EE1AF8BB7300479AD9 /* Main.storyboard */,
-				BA0B75F11AF8BB7300479AD9 /* Images.xcassets */,
-				BA0B75F31AF8BB7300479AD9 /* LaunchScreen.xib */,
 				BA0B75E81AF8BB7300479AD9 /* Supporting Files */,
 			);
 			path = Project4EasyBroswer;
@@ -90,6 +87,9 @@
 		BA0B75E81AF8BB7300479AD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BA0B75EA1AF8BB7300479AD9 /* AppDelegate.swift */,
+				BA0B75F11AF8BB7300479AD9 /* Images.xcassets */,
+				BA0B75F31AF8BB7300479AD9 /* LaunchScreen.xib */,
 				BA0B75E91AF8BB7300479AD9 /* Info.plist */,
 			);
 			name = "Supporting Files";
