@@ -11,6 +11,8 @@ import WebKit
 
 class ViewController: UIViewController {
     
+    var webView: WKWebView!
+    
     //Override the actual loading of the view – we don't want that empty thing on the storyboard, we want our own code
     override func loadView() {
         //Create a new instance of Apple's WKWebView web browser component and assign it to a variable called webView
