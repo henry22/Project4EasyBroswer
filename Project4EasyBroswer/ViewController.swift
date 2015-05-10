@@ -26,7 +26,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //Creates a new NSURL
+        let url = NSURL(string: "https://www.apple.com/tw/")!
+        //Creates a new NSURLRequest object from that NSURL, and gives it to our web view to load
+        webView.loadRequest(NSURLRequest(URL: url))
+        //Allows users to swipe from the left or right edge to move backward or forward in their web browsing
+        webView.allowsBackForwardNavigationGestures = true
     }
 
     override func didReceiveMemoryWarning() {
