@@ -9,7 +9,8 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
+//Create a new subclass of UIViewController called ViewController, and tell the compiler that we promise we're safe to use as a WKNavigationDelegate
+class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     
