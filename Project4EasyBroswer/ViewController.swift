@@ -47,6 +47,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+   
+    func openPage(action: UIAlertAction!) {
+        //Use the title property of the action(apple.com, slashdot.org),put "http://" in front of it, then construct an NSURL out of it.
+        let url = NSURL(string: "http://" + action.title)!
+        webView.loadRequest(NSURLRequest(URL: url))
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
