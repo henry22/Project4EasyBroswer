@@ -36,6 +36,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Using a custom title for our bar button rather than a system icon
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: "openTapped")
     }
+    
+    func openTapped() {
+        //Using nil for the message, because this alert doesn't need one.
+        //Using the preferredStyle of .ActionSheet because we're prompting the user for more information.
+        //Adding a dedicated Cancel button using style .Cancel. It has a handler of nil which will just hide the alert controller.
+        let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "apple.com", style: .Default, handler: openPage))
+        alertController.addAction(UIAlertAction(title: "slashdot.org", style: .Default, handler: openPage))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
