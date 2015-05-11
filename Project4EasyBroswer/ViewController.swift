@@ -32,6 +32,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.loadRequest(NSURLRequest(URL: url))
         //Allows users to swipe from the left or right edge to move backward or forward in their web browsing
         webView.allowsBackForwardNavigationGestures = true
+        
+        //Using a custom title for our bar button rather than a system icon
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: "openTapped")
     }
 
     override func didReceiveMemoryWarning() {
