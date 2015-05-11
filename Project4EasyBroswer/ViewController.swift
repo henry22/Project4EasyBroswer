@@ -43,18 +43,23 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Adding a dedicated Cancel button using style .Cancel. It has a handler of nil which will just hide the alert controller.
         let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: .ActionSheet)
         alertController.addAction(UIAlertAction(title: "apple.com", style: .Default, handler: openPage))
-        alertController.addAction(UIAlertAction(title: "slashdot.org", style: .Default, handler: openPage))
+        alertController.addAction(UIAlertAction(title: "yahoo.com", style: .Default, handler: openPage))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
     }
     
    
     func openPage(action: UIAlertAction!) {
-        //Use the title property of the action(apple.com, slashdot.org),put "http://" in front of it, then construct an NSURL out of it.
+        //Use the title property of the action(apple.com, yahoo.com),put "http://" in front of it, then construct an NSURL out of it.
         let url = NSURL(string: "http://" + action.title)!
         webView.loadRequest(NSURLRequest(URL: url))
     }
-
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        //All this method does it update our view controller's title property to be the title of the web view.
+        title = webView.title
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
