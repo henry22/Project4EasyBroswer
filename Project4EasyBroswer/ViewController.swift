@@ -58,6 +58,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func refreshTapped() {
+        //WKWebView has a reload() method that we can call, and it just reloads the web page
+        webView.reload()
+    }
+    
    
     func openPage(action: UIAlertAction!) {
         //Use the title property of the action(apple.com, yahoo.com),put "http://" in front of it, then construct an NSURL out of it.
