@@ -39,7 +39,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //.FlexibleSpace, which creates a flexible space. It doesn't need a target or action because it can't be tapped
         let spacer = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         //Now we're calling the refreshTapped() method
-        let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refreshTapped")
+        let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: "reload")
         
         //An array containing the flexible space and the refresh button, then sets it to be our view controller's toolbarItems array
         toolbarItems = [spacer, refresh]
@@ -57,12 +57,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
     }
-    
-    func refreshTapped() {
-        //WKWebView has a reload() method that we can call, and it just reloads the web page
-        webView.reload()
-    }
-    
+        
    
     func openPage(action: UIAlertAction!) {
         //Use the title property of the action(apple.com, yahoo.com),put "http://" in front of it, then construct an NSURL out of it.
