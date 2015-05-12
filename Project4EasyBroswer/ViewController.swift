@@ -35,6 +35,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         //Using a custom title for our bar button rather than a system icon
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: "openTapped")
+        
+        //.FlexibleSpace, which creates a flexible space. It doesn't need a target or action because it can't be tapped
+        let spacer = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        //Now we're calling the refreshTapped() method
+        let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refreshTapped")
+        
+        //An array containing the flexible space and the refresh button, then sets it to be our view controller's toolbarItems array
+        toolbarItems = [spacer, refresh]
+        //Show the toolbar and its items will be loaded from our current view
+        navigationController?.navigationBarHidden = false
     }
     
     func openTapped() {
