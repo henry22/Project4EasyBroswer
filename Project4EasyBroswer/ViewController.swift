@@ -44,7 +44,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //An array containing the flexible space and the refresh button, then sets it to be our view controller's toolbarItems array
         toolbarItems = [spacer, refresh]
         //Show the toolbar and its items will be loaded from our current view
-        navigationController?.navigationBarHidden = false
+        navigationController?.toolbarHidden = false
     }
     
     func openTapped() {
