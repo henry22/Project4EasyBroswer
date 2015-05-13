@@ -13,6 +13,7 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
+    var progressView: UIProgressView!
     
     //Override the actual loading of the view – we don't want that empty thing on the storyboard, we want our own code
     override func loadView() {
