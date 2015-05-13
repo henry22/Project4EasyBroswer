@@ -14,6 +14,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView: UIProgressView!
+    var websites = ["apple.com", "yahoo.com"]
     
     //Override the actual loading of the view – we don't want that empty thing on the storyboard, we want our own code
     override func loadView() {
@@ -28,7 +29,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Creates a new NSURL
-        let url = NSURL(string: "https://www.apple.com/tw/")!
+        let url = NSURL(string: "https://" + websites[0])!
         //Creates a new NSURLRequest object from that NSURL, and gives it to our web view to load
         webView.loadRequest(NSURLRequest(URL: url))
         //Allows users to swipe from the left or right edge to move backward or forward in their web browsing
@@ -61,7 +62,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         //If the estimatedProgress value of the web view has changed, we set the progress property of our progress view to the new estimatedProgress value
         if keyPath == "estimatedProgress" {
-            //estimatedProgress is a Double,UIProgressView's progress property is a Float, so we need to create a new Float from the Double 
+            //estimatedProgress is a Double,UIProgressView's progress property is a Float, so we need to create a new Float from the Double
             progressView.progress = Float(webView.estimatedProgress)
         }
     }
@@ -71,8 +72,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Using the preferredStyle of .ActionSheet because we're prompting the user for more information.
         //Adding a dedicated Cancel button using style .Cancel. It has a handler of nil which will just hide the alert controller.
         let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "apple.com", style: .Default, handler: openPage))
-        alertController.addAction(UIAlertAction(title: "yahoo.com", style: .Default, handler: openPage))
+        for website in websites {
+            alertController.addAction(UIAlertAction(title: website, style: .Default, handler: openPage))
+        }
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
     }
