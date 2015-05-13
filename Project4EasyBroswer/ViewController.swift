@@ -37,6 +37,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Using a custom title for our bar button rather than a system icon
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: "openTapped")
         
+        //Creates a new UIProgressView instance, giving it the default style
+        progressView = UIProgressView(progressViewStyle: .Default)
+        //Tells the progress view set its layout size so that it fits its contents fully
+        progressView.sizeToFit()
+        //Creates a new UIBarButtonItem using the customView parameter, where we wrap up our UIProgressView in a UIBarButtonItem so that it can go into our toolbar
+        let progressButton = UIBarButtonItem(customView: progressView)
+        
         //.FlexibleSpace, which creates a flexible space. It doesn't need a target or action because it can't be tapped
         let spacer = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         //Now we're calling the refreshTapped() method
