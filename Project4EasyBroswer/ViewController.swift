@@ -72,9 +72,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Using the preferredStyle of .ActionSheet because we're prompting the user for more information.
         //Adding a dedicated Cancel button using style .Cancel. It has a handler of nil which will just hide the alert controller.
         let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: .ActionSheet)
+        
         for website in websites {
             alertController.addAction(UIAlertAction(title: website, style: .Default, handler: openPage))
         }
+        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         presentViewController(alertController, animated: true, completion: nil)
     }
@@ -89,6 +91,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         //All this method does it update our view controller's title property to be the title of the web view.
         title = webView.title
+    }
+    
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+        let url = navigationAction.request.URL
+        
+        if let host = url!.host {
+            for website in websites {
+                if website.rangeOfString(website) != nil {
+                    decisionHandler(.Allow)
+                    return
+                }
+            }
+        }
+        decisionHandler(.Cancel)
     }
     
     override func didReceiveMemoryWarning() {
