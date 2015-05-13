@@ -53,6 +53,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         toolbarItems = [progressButton, spacer, refresh]
         //Show the toolbar and its items will be loaded from our current view
         navigationController?.toolbarHidden = false
+        
+        //The addObserver() method takes four parameters: who the observer is (we're the observer, so we use self), what property we want to observe (we want the estimatedProgress property), which value we want (we want the value that was just set, so we want the new one), and a context value
+        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
     }
     
     func openTapped() {
