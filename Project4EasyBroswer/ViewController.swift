@@ -58,6 +58,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
     }
     
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        //If the estimatedProgress value of the web view has changed, we set the progress property of our progress view to the new estimatedProgress value
+        if keyPath == "estimatedProgress" {
+            //estimatedProgress is a Double,UIProgressView's progress property is a Float, so we need to create a new Float from the Double 
+            progressView.progress = Float(webView.estimatedProgress)
+        }
+    }
+    
     func openTapped() {
         //Using nil for the message, because this alert doesn't need one.
         //Using the preferredStyle of .ActionSheet because we're prompting the user for more information.
